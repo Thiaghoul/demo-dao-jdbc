@@ -6,6 +6,7 @@ import models.dao.SellerDao;
 import models.entities.Department;
 import models.entities.Seller;
 
+import java.util.Date;
 import java.util.List;
 
 public class Main {
@@ -29,6 +30,11 @@ public class Main {
         for (Seller s : sellerList) {
             System.out.println(s);
         }
+
+        System.out.println("==== Test 4: seller insert====");
+        Seller newSeller = new Seller(null, "Greg", "greg@gmail.com", new Date(), 4000.0, department);
+        sellerDao.insert(newSeller);
+        System.out.println("Inserted! new id = " + newSeller.getId());
 
     }
 }
