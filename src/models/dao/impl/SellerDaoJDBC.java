@@ -62,8 +62,8 @@ public class SellerDaoJDBC implements SellerDao {
 
         }
     }
-    @Override
 
+    @Override
     public void update(Seller obj) {
         PreparedStatement st = null;
 
@@ -71,6 +71,7 @@ public class SellerDaoJDBC implements SellerDao {
             st = conn.prepareStatement("UPDATE seller\n" +
                     "SET Name = ?, Email = ?, BirthDate = ?, BaseSalary = ?, DepartmentId = ?\n" +
                     "WHERE Id = ?", Statement.RETURN_GENERATED_KEYS);
+
             st.setString(1, obj.getName());
             st.setString(2, obj.getEmail());
             st.setDate(3, new java.sql.Date(obj.getBirthDate().getTime()));
@@ -86,10 +87,8 @@ public class SellerDaoJDBC implements SellerDao {
         }finally{
             DB.closeStatement(st);
         }
-
-
-
     }
+
     @Override
     public void deleteById(int id) {
         PreparedStatement st = null;
